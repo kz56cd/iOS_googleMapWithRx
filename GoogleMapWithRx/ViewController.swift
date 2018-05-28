@@ -48,17 +48,29 @@ extension ViewController {
             .disposed(by: disposeBag)
         
         // marker タップ検知
-        mapView.rx.didTapAt.asDriver()
-            .drive(onNext: {[weak self] in
+        // marker タップ検知
+        mapView.rx.selectedMarker.asDriver()
+            .drive(onNext: { [weak self] selected in
                 guard let _self = self else { return }
-                print("Did tap at coordinate: \($0)")
+                if let marker = selected {
+                    print("Selected marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
+                    _self.changeCollectionViewState(isHidden: false)
+                } else {
+                    print("Selected marker: nil")
+                }
             })
+            .disposed(by: disposeBag)
+        
+        mapView.rx.didTapInfoWindowOf.asDriver()
+            .drive(onNext: { print("Did tap info window of marker: \($0)") })
             .disposed(by: disposeBag)
         
         mapView.rx.willMove.asDriver()
             .drive(onNext: { [weak self] isUserGesture in
                 guard let _self = self else { return }
-                _self.changeCollectionViewState(isHidden: isUserGesture)
+                if isUserGesture {
+                    _self.changeCollectionViewState(isHidden: true)
+                }
             })
             .disposed(by: disposeBag)
         
@@ -82,7 +94,7 @@ extension ViewController {
         
         do {
             let marker = GMSMarker(position: center)
-            marker.title = "Hello, RxSwift"
+            marker.title = "¥1,000"
             marker.isDraggable = true
             marker.icon = #imageLiteral(resourceName: "marker_normal")
             marker.map = mapView
