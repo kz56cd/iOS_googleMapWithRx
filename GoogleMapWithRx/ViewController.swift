@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMapView()
+        prepareCollectionView()
     }
 }
 
@@ -51,6 +52,23 @@ extension ViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    fileprivate func prepareCollectionView() {
+//        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+//        layout.scrollDirection = .horizontal
+    }
+}
+
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as UICollectionViewCell
+        print("🎰")
+        return cell
     }
 }
 
