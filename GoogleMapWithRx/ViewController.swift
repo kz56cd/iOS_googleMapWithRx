@@ -12,8 +12,10 @@ import GoogleMaps
 import RxGoogleMaps
 
 class ViewController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: GMSMapView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewBottomMarginConstraint: NSLayoutConstraint!
     
     let disposeBag = DisposeBag()
     
@@ -21,6 +23,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         configureMapView()
         prepareCollectionView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setMarker()
     }
 }
 
@@ -34,13 +41,28 @@ extension ViewController {
 
         // camera ポジション変更 検知
         mapView.rx.didChange.asDriver()
-            .drive(onNext: { print("0️⃣ Did change position: \($0)") })
+            .drive(onNext: {[weak self] in
+                guard let _self = self else { return }
+                print("0️⃣ Did change position: \($0)")
+//                _self.changeCollectionViewState(isHidden: true)
+            })
             .disposed(by: disposeBag)
         
         // marker タップ検知
         mapView.rx.didTapAt.asDriver()
-            .drive(onNext: { print("Did tap at coordinate: \($0)") })
+            .drive(onNext: {[weak self] in
+                guard let _self = self else { return }
+                print("Did tap at coordinate: \($0)")
+                _self.changeCollectionViewState(isHidden: false)
+            })
             .disposed(by: disposeBag)
+        
+        mapView.rx.didBeginDragging.asDriver()
+            .drive(onNext: {[weak self] in
+                guard let _self = self else { return }
+                print("0️⃣ Did begin drug: \($0)")
+                _self.changeCollectionViewState(isHidden: true)
+            })
         
         // location 更新
         mapView.rx.myLocation
@@ -54,9 +76,33 @@ extension ViewController {
             .disposed(by: disposeBag)
     }
     
+    fileprivate func setMarker() {
+        let center = CLLocationCoordinate2D(
+            latitude: 35.906295,
+            longitude: 139.623999
+        )
+        
+        do {
+            let marker = GMSMarker(position: center)
+            marker.title = "Hello, RxSwift"
+            marker.isDraggable = true
+            marker.icon = #imageLiteral(resourceName: "marker_normal")
+            marker.map = mapView
+        }
+    }
+    
     fileprivate func prepareCollectionView() {
 //        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
 //        layout.scrollDirection = .horizontal
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+    }
+    
+    fileprivate func changeCollectionViewState(isHidden: Bool) {
+        UIView.animate(withDuration: 0.6) { [weak self] in
+            guard let _self = self else { return }
+            _self.collectionViewBottomMarginConstraint.constant = isHidden ? -138 : 0
+            _self.view.layoutIfNeeded()
+        }
     }
 }
 
