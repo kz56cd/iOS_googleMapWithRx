@@ -1,0 +1,33 @@
+PODS:
+  - GoogleMaps (2.6.0):
+    - GoogleMaps/Maps (= 2.6.0)
+  - GoogleMaps/Base (2.6.0)
+  - GoogleMaps/Maps (2.6.0):
+    - GoogleMaps/Base
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxGoogleMaps (3.0.1):
+    - GoogleMaps (~> 2.6.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+
+DEPENDENCIES:
+  - RxGoogleMaps
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GoogleMaps
+    - RxCocoa
+    - RxGoogleMaps
+    - RxSwift
+
+SPEC CHECKSUMS:
+  GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxGoogleMaps: 8e8501ee42f2f4095c02e7794ecb0e8758358934
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+
+PODFILE CHECKSUM: 527d18a0aef4903ef9c34f35a8abad81afbaf835
+
+COCOAPODS: 1.5.2
