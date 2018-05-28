@@ -44,7 +44,6 @@ extension ViewController {
             .drive(onNext: {[weak self] in
                 guard let _self = self else { return }
                 print("0️⃣ Did change position: \($0)")
-//                _self.changeCollectionViewState(isHidden: true)
             })
             .disposed(by: disposeBag)
         
@@ -53,16 +52,15 @@ extension ViewController {
             .drive(onNext: {[weak self] in
                 guard let _self = self else { return }
                 print("Did tap at coordinate: \($0)")
-                _self.changeCollectionViewState(isHidden: false)
             })
             .disposed(by: disposeBag)
         
-        mapView.rx.didBeginDragging.asDriver()
-            .drive(onNext: {[weak self] in
+        mapView.rx.willMove.asDriver()
+            .drive(onNext: { [weak self] isUserGesture in
                 guard let _self = self else { return }
-                print("0️⃣ Did begin drug: \($0)")
-                _self.changeCollectionViewState(isHidden: true)
+                _self.changeCollectionViewState(isHidden: isUserGesture)
             })
+            .disposed(by: disposeBag)
         
         // location 更新
         mapView.rx.myLocation
@@ -98,7 +96,7 @@ extension ViewController {
     }
     
     fileprivate func changeCollectionViewState(isHidden: Bool) {
-        UIView.animate(withDuration: 0.6) { [weak self] in
+        UIView.animate(withDuration: 1.0) { [weak self] in
             guard let _self = self else { return }
             _self.collectionViewBottomMarginConstraint.constant = isHidden ? -138 : 0
             _self.view.layoutIfNeeded()
