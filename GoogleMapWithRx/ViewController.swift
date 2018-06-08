@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
+    var spaces: [Space] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMapView()
@@ -33,6 +35,8 @@ class ViewController: UIViewController {
 
 extension ViewController {
     fileprivate func configureMapView() {
+        getSpacesByApi()
+        
         mapView.camera = GMSCameraPosition.camera( // 大宮駅
             withLatitude: 35.906295,
             longitude: 139.623999,
@@ -47,7 +51,6 @@ extension ViewController {
             })
             .disposed(by: disposeBag)
         
-        // marker タップ検知
         // marker タップ検知
         mapView.rx.selectedMarker.asDriver()
             .drive(onNext: { [weak self] selected in
@@ -86,19 +89,36 @@ extension ViewController {
             .disposed(by: disposeBag)
     }
     
+    fileprivate func getSpacesByApi() {
+        sleep(2)
+        // NOTE: 本来はAPIで取得する
+        spaces = [
+            Space(id: 1, name: "【20:00-29:00】当日レンタルOK！ドリンク飲み放題ダーツカラオケ完備のパーティールーム", latitude: 35.905367, longitude: 139.621681, minPrice: 1000),
+            Space(id: 2, name: "大宮駅徒歩5分　きれいな38名収容貸し会議室", latitude: 35.907539, longitude: 139.629888, minPrice: 1000),
+            Space(id: 3, name: "【大宮】清潔感が好評！落ち着いた雰囲気の中会議室(18名様)", latitude: 35.911128, longitude: 139.625505, minPrice: 1000),
+            Space(id: 4, name: "foo", latitude: 35.911128, longitude: 140.625505, minPrice: 1000)
+        ]
+        setMarker()
+    }
+    
     fileprivate func setMarker() {
-        let center = CLLocationCoordinate2D(
-            latitude: 35.906295,
-            longitude: 139.623999
-        )
-        
+        guard spaces.count > 0 else { return }
         do {
-            let marker = GMSMarker(position: center)
-            marker.title = "¥1,000"
-            marker.isDraggable = true
-            marker.icon = #imageLiteral(resourceName: "marker_normal")
-            marker.map = mapView
+            func configureMarker(space: Space) {
+                let marker = GMSMarker(
+                    position: CLLocationCoordinate2D(
+                        latitude: space.latitude,
+                        longitude: space.longitude
+                    )
+                )
+                marker.title = "¥1,000"
+                marker.isDraggable = true
+                marker.icon = #imageLiteral(resourceName: "marker_normal")
+                marker.map = mapView
+            }
+            spaces.map { configureMarker(space: $0) }
         }
+        collectionView.reloadData()
     }
     
     fileprivate func prepareCollectionView() {
@@ -118,7 +138,7 @@ extension ViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return spaces.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
