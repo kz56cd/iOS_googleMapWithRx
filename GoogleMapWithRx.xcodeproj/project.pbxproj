@@ -20,6 +20,8 @@
 		EAED957D20CA2DEE00749D1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAED957820CA2DEE00749D1D /* LaunchScreen.storyboard */; };
 		EAED957E20CA2DEE00749D1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED957A20CA2DEE00749D1D /* AppDelegate.swift */; };
 		EAED957F20CA2DEE00749D1D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAED957B20CA2DEE00749D1D /* Info.plist */; };
+		EAED958320CA30E100749D1D /* SpaceCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED958220CA30E100749D1D /* SpaceCollectionCell.swift */; };
+		EAED958520CA30F000749D1D /* SpaceCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAED958420CA30F000749D1D /* SpaceCollectionCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		EAED957920CA2DEE00749D1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAED957A20CA2DEE00749D1D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAED957B20CA2DEE00749D1D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAED958220CA30E100749D1D /* SpaceCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCollectionCell.swift; sourceTree = "<group>"; };
+		EAED958420CA30F000749D1D /* SpaceCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceCollectionCell.xib; sourceTree = "<group>"; };
 		FF83E47814B6329D9C1FC0A3 /* Pods_GoogleMapWithRxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapWithRxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -197,6 +201,8 @@
 		EAED957520CA2DCC00749D1D /* view */ = {
 			isa = PBXGroup;
 			children = (
+				EAED958420CA30F000749D1D /* SpaceCollectionCell.xib */,
+				EAED958220CA30E100749D1D /* SpaceCollectionCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAED957120CA2C1600749D1D /* MapViewController.storyboard in Resources */,
+				EAED958520CA30F000749D1D /* SpaceCollectionCell.xib in Resources */,
 				EAED957F20CA2DEE00749D1D /* Info.plist in Resources */,
 				EAED957C20CA2DEE00749D1D /* Assets.xcassets in Resources */,
 				EAED957D20CA2DEE00749D1D /* LaunchScreen.storyboard in Resources */,
@@ -459,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAED958320CA30E100749D1D /* SpaceCollectionCell.swift in Sources */,
 				EAED956D20CA2A4C00749D1D /* Storyboards.swift in Sources */,
 				EAED956F20CA2C0F00749D1D /* MapViewController.swift in Sources */,
 				EAED957E20CA2DEE00749D1D /* AppDelegate.swift in Sources */,
