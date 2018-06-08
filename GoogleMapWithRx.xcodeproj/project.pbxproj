@@ -17,6 +17,7 @@
 		EA9B91A320B7C68100017ADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9B91A120B7C68100017ADD /* LaunchScreen.storyboard */; };
 		EA9B91AE20B7C68100017ADD /* GoogleMapWithRxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B91AD20B7C68100017ADD /* GoogleMapWithRxTests.swift */; };
 		EA9B91B920B7C68100017ADD /* GoogleMapWithRxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B91B820B7C68100017ADD /* GoogleMapWithRxUITests.swift */; };
+		EAED956820CA200200749D1D /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED956720CA200200749D1D /* Space.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		EA9B91B420B7C68100017ADD /* GoogleMapWithRxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleMapWithRxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9B91B820B7C68100017ADD /* GoogleMapWithRxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapWithRxUITests.swift; sourceTree = "<group>"; };
 		EA9B91BA20B7C68100017ADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAED956720CA200200749D1D /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		FF83E47814B6329D9C1FC0A3 /* Pods_GoogleMapWithRxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapWithRxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,6 +139,7 @@
 		EA9B919720B7C67F00017ADD /* GoogleMapWithRx */ = {
 			isa = PBXGroup;
 			children = (
+				EAED956620CA1FF800749D1D /* Model */,
 				EA9B919820B7C67F00017ADD /* AppDelegate.swift */,
 				EA9B919A20B7C67F00017ADD /* ViewController.swift */,
 				EA9B919C20B7C67F00017ADD /* Main.storyboard */,
@@ -163,6 +166,14 @@
 				EA9B91BA20B7C68100017ADD /* Info.plist */,
 			);
 			path = GoogleMapWithRxUITests;
+			sourceTree = "<group>";
+		};
+		EAED956620CA1FF800749D1D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAED956720CA200200749D1D /* Space.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +409,7 @@
 			files = (
 				EA9B919B20B7C67F00017ADD /* ViewController.swift in Sources */,
 				EA9B919920B7C67F00017ADD /* AppDelegate.swift in Sources */,
+				EAED956820CA200200749D1D /* Space.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
