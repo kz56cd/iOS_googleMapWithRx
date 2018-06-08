@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  GoogleMapWithRx
 //
 //  Created by Masakazu Sano on 2018/05/25.
@@ -11,7 +11,7 @@ import RxSwift
 import GoogleMaps
 import RxGoogleMaps
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension MapViewController {
     fileprivate func configureMapView() {
         getSpacesByApi()
         
@@ -42,7 +42,7 @@ extension ViewController {
             longitude: 139.623999,
             zoom: 14
         )
-
+        
         // camera ポジション変更 検知
         mapView.rx.didChange.asDriver()
             .drive(onNext: {[weak self] in
@@ -108,7 +108,7 @@ extension ViewController {
     fileprivate func setMarker() {
         guard spaces.count > 0 else { return }
         do {
-            func configureMarker(space: Space) {
+            func initMarker(by space: Space) -> GMSMarker {
                 let marker = GMSMarker(
                     position: CLLocationCoordinate2D(
                         latitude: space.latitude,
@@ -118,16 +118,18 @@ extension ViewController {
                 marker.title = "¥ \(space.minPrice)(\(space.id))"
                 marker.isDraggable = true
                 marker.icon = #imageLiteral(resourceName: "marker_normal")
-                marker.map = mapView
+                return marker
             }
-            spaces.map { configureMarker(space: $0) }
+            _ = spaces
+                .map { initMarker(by: $0) }
+                .map { $0.map = mapView }
         }
         collectionView.reloadData()
     }
     
     fileprivate func prepareCollectionView() {
-//        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-//        layout.scrollDirection = .horizontal
+        //        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        //        layout.scrollDirection = .horizontal
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
     
@@ -140,7 +142,7 @@ extension ViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension MapViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return spaces.count
     }

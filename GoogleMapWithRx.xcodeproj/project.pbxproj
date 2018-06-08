@@ -11,14 +11,13 @@
 		9F61F650953C41B22425D4C5 /* Pods_GoogleMapWithRxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF259233C0F639133501D8A /* Pods_GoogleMapWithRxUITests.framework */; };
 		B38F12B13D47B8D3D439CA79 /* Pods_GoogleMapWithRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A4333D11E62E11CE7501E8 /* Pods_GoogleMapWithRx.framework */; };
 		EA9B919920B7C67F00017ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B919820B7C67F00017ADD /* AppDelegate.swift */; };
-		EA9B919B20B7C67F00017ADD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B919A20B7C67F00017ADD /* ViewController.swift */; };
-		EA9B919E20B7C67F00017ADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9B919C20B7C67F00017ADD /* Main.storyboard */; };
 		EA9B91A020B7C68100017ADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9B919F20B7C68100017ADD /* Assets.xcassets */; };
-		EA9B91A320B7C68100017ADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9B91A120B7C68100017ADD /* LaunchScreen.storyboard */; };
 		EA9B91AE20B7C68100017ADD /* GoogleMapWithRxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B91AD20B7C68100017ADD /* GoogleMapWithRxTests.swift */; };
 		EA9B91B920B7C68100017ADD /* GoogleMapWithRxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B91B820B7C68100017ADD /* GoogleMapWithRxUITests.swift */; };
 		EAED956820CA200200749D1D /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED956720CA200200749D1D /* Space.swift */; };
 		EAED956D20CA2A4C00749D1D /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED956C20CA2A4C00749D1D /* Storyboards.swift */; };
+		EAED956F20CA2C0F00749D1D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED956E20CA2C0F00749D1D /* MapViewController.swift */; };
+		EAED957120CA2C1600749D1D /* MapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAED957020CA2C1600749D1D /* MapViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,10 +48,7 @@
 		D8250BB8A6012A6B04B6BD9D /* Pods-GoogleMapWithRxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapWithRxTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapWithRxTests/Pods-GoogleMapWithRxTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA9B919520B7C67F00017ADD /* GoogleMapWithRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleMapWithRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9B919820B7C67F00017ADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA9B919A20B7C67F00017ADD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EA9B919D20B7C67F00017ADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA9B919F20B7C68100017ADD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EA9B91A220B7C68100017ADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA9B91A420B7C68100017ADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9B91A920B7C68100017ADD /* GoogleMapWithRxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleMapWithRxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9B91AD20B7C68100017ADD /* GoogleMapWithRxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapWithRxTests.swift; sourceTree = "<group>"; };
@@ -62,6 +58,8 @@
 		EA9B91BA20B7C68100017ADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAED956720CA200200749D1D /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		EAED956C20CA2A4C00749D1D /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
+		EAED956E20CA2C0F00749D1D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		EAED957020CA2C1600749D1D /* MapViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapViewController.storyboard; sourceTree = "<group>"; };
 		FF83E47814B6329D9C1FC0A3 /* Pods_GoogleMapWithRxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapWithRxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -142,10 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				EA9B919820B7C67F00017ADD /* AppDelegate.swift */,
-				EA9B919A20B7C67F00017ADD /* ViewController.swift */,
-				EA9B919C20B7C67F00017ADD /* Main.storyboard */,
 				EA9B919F20B7C68100017ADD /* Assets.xcassets */,
-				EA9B91A120B7C68100017ADD /* LaunchScreen.storyboard */,
 				EA9B91A420B7C68100017ADD /* Info.plist */,
 				EAED956620CA1FF800749D1D /* Model */,
 				EAED956B20CA2A3200749D1D /* UI */,
@@ -191,6 +186,8 @@
 		EAED956B20CA2A3200749D1D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EAED957020CA2C1600749D1D /* MapViewController.storyboard */,
+				EAED956E20CA2C0F00749D1D /* MapViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -305,9 +302,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA9B91A320B7C68100017ADD /* LaunchScreen.storyboard in Resources */,
+				EAED957120CA2C1600749D1D /* MapViewController.storyboard in Resources */,
 				EA9B91A020B7C68100017ADD /* Assets.xcassets in Resources */,
-				EA9B919E20B7C67F00017ADD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,8 +438,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAED956D20CA2A4C00749D1D /* Storyboards.swift in Sources */,
-				EA9B919B20B7C67F00017ADD /* ViewController.swift in Sources */,
 				EA9B919920B7C67F00017ADD /* AppDelegate.swift in Sources */,
+				EAED956F20CA2C0F00749D1D /* MapViewController.swift in Sources */,
 				EAED956820CA200200749D1D /* Space.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,25 +474,6 @@
 			targetProxy = EA9B91B520B7C68100017ADD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		EA9B919C20B7C67F00017ADD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA9B919D20B7C67F00017ADD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EA9B91A120B7C68100017ADD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA9B91A220B7C68100017ADD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EA9B91BB20B7C68100017ADD /* Debug */ = {
