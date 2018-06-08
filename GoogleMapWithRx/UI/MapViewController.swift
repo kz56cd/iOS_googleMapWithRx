@@ -13,26 +13,20 @@ import RxGoogleMaps
 import Prelude
 
 class MapViewController: UIViewController {
+    // MARK: - IBOutlet
     @IBOutlet weak var mapView: GMSMapView!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewBottomMarginConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
     
+    // MARK: - Property
     let disposeBag = DisposeBag()
-    
-//    var spaces: [Space] = []
     var markerInfos: [MarkerInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMapView()
         prepareCollectionView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        testScroll()
     }
 }
 
@@ -65,13 +59,21 @@ extension MapViewController {
         // marker タップ検知
         mapView.rx.selectedMarker.asDriver()
             .drive(onNext: { [weak self] selected in
-                guard let _self = self else { return }
-                if let marker = selected {
-                    print("Selected marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
-                    _self.changeCollectionViewState(isHidden: false)
-                } else {
-                    print("Selected marker: nil")
+                guard let _self = self,
+                    let marker = selected else {
+                    return
                 }
+                print("Selected marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
+                _self.changeCollectionViewState(isHidden: false)
+                
+                // test
+                let targetMarkerInfo = _self.markerInfos
+                    .enumerated()
+                    .filter { $1.marker == marker }
+                    .compactMap { $0 }
+                    .first
+                print(targetMarkerInfo)
+                _self.scrollCell(by: targetMarkerInfo?.offset)
             })
             .disposed(by: disposeBag)
         
@@ -136,14 +138,15 @@ extension MapViewController {
         }
     }
     
-    fileprivate func testScroll() {
-        sleep(3)
+    fileprivate func scrollCell(by row: Int?) {
+        guard let row = row else { return }
         collectionView.scrollToItem(
-            at: IndexPath(row: markerInfos.count - 3, section: 0),
+            at: IndexPath(row: row, section: 0),
             at: .centeredHorizontally,
             animated: true
         )
     }
+
 }
 
 extension MapViewController: UICollectionViewDataSource {
