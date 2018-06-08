@@ -96,8 +96,12 @@ extension ViewController {
             Space(id: 1, name: "【20:00-29:00】当日レンタルOK！ドリンク飲み放題ダーツカラオケ完備のパーティールーム", latitude: 35.905367, longitude: 139.621681, minPrice: 1000),
             Space(id: 2, name: "大宮駅徒歩5分　きれいな38名収容貸し会議室", latitude: 35.907539, longitude: 139.629888, minPrice: 1000),
             Space(id: 3, name: "【大宮】清潔感が好評！落ち着いた雰囲気の中会議室(18名様)", latitude: 35.911128, longitude: 139.625505, minPrice: 1000),
-            Space(id: 4, name: "foo", latitude: 35.911128, longitude: 140.625505, minPrice: 1000)
         ]
+        for i in 0...20 {
+            let long = 139.635505 + (Double(i) / 200)
+            spaces.append(Space(id: 4, name: "foo", latitude: 35.911128, longitude: long, minPrice: 1000))
+        }
+        
         setMarker()
     }
     
@@ -111,7 +115,7 @@ extension ViewController {
                         longitude: space.longitude
                     )
                 )
-                marker.title = "¥1,000"
+                marker.title = "¥ \(space.minPrice)(\(space.id))"
                 marker.isDraggable = true
                 marker.icon = #imageLiteral(resourceName: "marker_normal")
                 marker.map = mapView
@@ -147,4 +151,3 @@ extension ViewController: UICollectionViewDataSource {
         return cell
     }
 }
-
