@@ -181,8 +181,8 @@
 		EAED956620CA1FF800749D1D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EAED956720CA200200749D1D /* Space.swift */,
 				EAED958920CA717600749D1D /* MarkerInfo.swift */,
+				EAED956720CA200200749D1D /* Space.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

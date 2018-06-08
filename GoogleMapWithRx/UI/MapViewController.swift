@@ -26,9 +26,12 @@ class MapViewController: UIViewController {
     var markerInfos: [MarkerInfo] = []
     var selectedIndexPath: IndexPath? = nil {
         didSet {
-            guard let indexPath = selectedIndexPath else { return }
+            guard let indexPath = selectedIndexPath,
+                let oldPath = oldValue else {
+                return
+            }
+            collectionView.reloadItems(at: [indexPath, oldPath])
             scrollCell(by: indexPath)
-            collectionView.reloadItems(at: [indexPath])
         }
     }
     
@@ -43,6 +46,7 @@ extension MapViewController {
     // MARK: - for google map
     fileprivate func configureMapView() {
         mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
         
         // marker情報の配列を取得 -> mapにセット
         markerInfos = getSpacesByApi().map { MarkerInfo(space: $0) }
@@ -81,19 +85,7 @@ extension MapViewController {
                     .filter { $1.marker == marker }
                     .compactMap { IndexPath(row: $0.offset, section: 0) }
                     .first
-//                guard let indexPath = ip else { return } // TODO: Do more clean
                 _self.selectedIndexPath = indexPath
-//                _self.scrollCell(by: _self.selectedIndexPath)
-//                _self.collectionView.reloadItems(at: [_self.selectedIndexPath])
-                
-
-                
-//                guard let indexPath = ip else { return } // TODO: Do more clean
-//                guard let cell = _self.collectionView.cellForItem(at: indexPath) as? SpaceCollectionCell else { return }
-//                cell.isSelected = true
-//                _self.collectionView.reloadItems(at: [indexPath])
-//                _self.scrollCell(by: indexPath)
-//                _self.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
         
@@ -149,7 +141,7 @@ extension MapViewController {
     }
     
     fileprivate func changeCollectionViewState(isHidden: Bool) {
-        UIView.animate(withDuration: 0.1) { [weak self] in
+        UIView.animate(withDuration: 0.15) { [weak self] in
             guard let _self = self else { return }
             _self.collectionViewBottomMarginConstraint.constant = isHidden
                 ? -(_self.collectionViewHeightConstraint.constant - 35)
@@ -182,32 +174,9 @@ extension MapViewController: UICollectionViewDataSource {
 }
 
 extension MapViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, shouldSpringLoadItemAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
-        print("shouldSpringLoadItemAt: \(indexPath)")
-        return true
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, c indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("hoge")
         selectedIndexPath = indexPath
     }
 }
 
-struct MarkerInfo {
-    let marker: GMSMarker
-    let space: Space
-    
-    init(space: Space) {
-        self.space = space
-        
-        marker = GMSMarker(
-            position: CLLocationCoordinate2D(
-                latitude: space.latitude,
-                longitude: space.longitude
-            )
-        )
-        marker.title = "¥ \(space.minPrice)(\(space.id))"
-        marker.isDraggable = true
-        marker.icon = #imageLiteral(resourceName: "marker_normal")
-    }
-}

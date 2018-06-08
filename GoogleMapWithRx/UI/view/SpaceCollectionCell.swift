@@ -16,7 +16,6 @@ final class SpaceCollectionCell: UICollectionViewCell, XibInstantiatable {
     
     override var isSelected: Bool {
         didSet {
-            print("セレクトした \(isSelected)")
             selectedCell.isHidden = !isSelected
         }
     }

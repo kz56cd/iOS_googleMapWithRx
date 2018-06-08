@@ -22,9 +22,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.96060041240000005" green="0.96060041240000005" blue="0.96060041240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ngH-ml-waH" appends="YES" id="q63-1b-7M5"/>
-                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcc-5z-wdh" customClass="MDCButton">
                                 <rect key="frame" x="207" y="26" width="140" height="24"/>
@@ -90,11 +87,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YAh-yI-XfT" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="ngH-ml-waH">
-                    <connections>
-                        <action selector="SwipeMap:" destination="NeV-jZ-gNd" id="ntI-Jq-OuA"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="204" y="414.24287856071965"/>
         </scene>

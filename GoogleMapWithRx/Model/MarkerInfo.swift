@@ -8,7 +8,23 @@
 //
 
 import Foundation
+import GoogleMaps
 
-//struct MarkerInfo {
-//
-//}
+struct MarkerInfo {
+    let marker: GMSMarker
+    let space: Space
+    
+    init(space: Space) {
+        self.space = space
+        
+        marker = GMSMarker(
+            position: CLLocationCoordinate2D(
+                latitude: space.latitude,
+                longitude: space.longitude
+            )
+        )
+        marker.title = "¥ \(space.minPrice)(\(space.id))"
+        marker.isDraggable = true
+        marker.icon = #imageLiteral(resourceName: "marker_normal")
+    }
+}
