@@ -10,17 +10,72 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SpaceCollectionCell" customModule="GoogleMapWithRx" customModuleProvider="target">
+            <connections>
+                <outlet property="idLabel" destination="djq-g0-Utf" id="1c2-Lz-f87"/>
+                <outlet property="nameLabel" destination="gsg-r3-xQz" id="Xyv-Zz-O4W"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="THJ-nS-CjJ">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XrA-GR-qvk">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d51-7Q-zMY">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="90"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temp_space" translatesAutoresizingMaskIntoConstraints="NO" id="GpN-UY-8ix">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="DCr-tE-qhu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="id" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djq-g0-Utf">
+                                        <rect key="frame" x="52.5" y="9" width="46" height="72"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="GpN-UY-8ix" secondAttribute="trailing" id="Fz4-1T-FPU"/>
+                                    <constraint firstItem="djq-g0-Utf" firstAttribute="centerX" secondItem="d51-7Q-zMY" secondAttribute="centerX" id="KEl-xe-YaH"/>
+                                    <constraint firstAttribute="bottom" secondItem="GpN-UY-8ix" secondAttribute="bottom" id="Q8F-b0-RFq"/>
+                                    <constraint firstItem="GpN-UY-8ix" firstAttribute="leading" secondItem="d51-7Q-zMY" secondAttribute="leading" id="Zja-65-FDL"/>
+                                    <constraint firstItem="djq-g0-Utf" firstAttribute="centerY" secondItem="d51-7Q-zMY" secondAttribute="centerY" id="akB-da-djW"/>
+                                    <constraint firstItem="GpN-UY-8ix" firstAttribute="top" secondItem="d51-7Q-zMY" secondAttribute="top" id="gtV-n9-8Ro"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsg-r3-xQz">
+                                <rect key="frame" x="0.0" y="90" width="150" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
             </view>
+            <color key="backgroundColor" red="0.92214927002069202" green="0.91617263402052973" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="XrA-GR-qvk" secondAttribute="bottom" id="3hW-47-amz"/>
+                <constraint firstAttribute="trailing" secondItem="XrA-GR-qvk" secondAttribute="trailing" id="QBA-UT-jlx"/>
+                <constraint firstItem="XrA-GR-qvk" firstAttribute="leading" secondItem="THJ-nS-CjJ" secondAttribute="leading" id="WU8-uE-3GM"/>
+                <constraint firstItem="XrA-GR-qvk" firstAttribute="top" secondItem="THJ-nS-CjJ" secondAttribute="top" id="v9A-fa-LLf"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="eFE-sv-VfA"/>
-            <point key="canvasLocation" x="-111" y="-85"/>
+            <size key="customSize" width="131" height="128"/>
+            <point key="canvasLocation" x="-70.5" y="-46"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="temp_space" width="224" height="224"/>
+    </resources>
 </document>

@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import GoogleMaps
 import RxGoogleMaps
+import Prelude
 
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
@@ -99,7 +100,7 @@ extension MapViewController {
         ]
         for i in 0...20 {
             let long = 139.635505 + (Double(i) / 200)
-            spaces.append(Space(id: 4, name: "foo", latitude: 35.911128, longitude: long, minPrice: 1000))
+            spaces.append(Space(id: i + 3, name: "foo", latitude: 35.911128, longitude: long, minPrice: 1000))
         }
         
         setMarker()
@@ -128,9 +129,8 @@ extension MapViewController {
     }
     
     fileprivate func prepareCollectionView() {
-        //        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        //        layout.scrollDirection = .horizontal
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        collectionView.registerClassForCellWithType(SpaceCollectionCell.self)
     }
     
     fileprivate func changeCollectionViewState(isHidden: Bool) {
@@ -148,8 +148,8 @@ extension MapViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as UICollectionViewCell
-        print("🎰")
+        let cell = collectionView.dequeueReusableCellWithType(SpaceCollectionCell.self, forIndexPath: indexPath)
+        cell.configure(by: spaces[indexPath.row])
         return cell
     }
 }

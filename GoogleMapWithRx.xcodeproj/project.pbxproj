@@ -22,6 +22,7 @@
 		EAED957F20CA2DEE00749D1D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAED957B20CA2DEE00749D1D /* Info.plist */; };
 		EAED958320CA30E100749D1D /* SpaceCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED958220CA30E100749D1D /* SpaceCollectionCell.swift */; };
 		EAED958520CA30F000749D1D /* SpaceCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAED958420CA30F000749D1D /* SpaceCollectionCell.xib */; };
+		EAED958820CA331000749D1D /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAED958720CA331000749D1D /* Prelude.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		EAED957B20CA2DEE00749D1D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAED958220CA30E100749D1D /* SpaceCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCollectionCell.swift; sourceTree = "<group>"; };
 		EAED958420CA30F000749D1D /* SpaceCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceCollectionCell.xib; sourceTree = "<group>"; };
+		EAED958720CA331000749D1D /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = Carthage/Build/iOS/Prelude.framework; sourceTree = "<group>"; };
 		FF83E47814B6329D9C1FC0A3 /* Pods_GoogleMapWithRxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapWithRxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAED958820CA331000749D1D /* Prelude.framework in Frameworks */,
 				B38F12B13D47B8D3D439CA79 /* Pods_GoogleMapWithRx.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +104,7 @@
 		52D1EFE87E6AE4F7C1A47242 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAED958720CA331000749D1D /* Prelude.framework */,
 				47A4333D11E62E11CE7501E8 /* Pods_GoogleMapWithRx.framework */,
 				FF83E47814B6329D9C1FC0A3 /* Pods_GoogleMapWithRxTests.framework */,
 				CFF259233C0F639133501D8A /* Pods_GoogleMapWithRxUITests.framework */,
@@ -232,6 +236,7 @@
 				F43A0C4D19A2541F8E9FE3AB /* [CP] Embed Pods Frameworks */,
 				FE932E197EFA85F3B085C22F /* [CP] Copy Pods Resources */,
 				EAED956920CA2A0300749D1D /* SwiftGen */,
+				EAED958620CA32D100749D1D /* Cartahge */,
 			);
 			buildRules = (
 			);
@@ -420,6 +425,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftgen >/dev/null; then\nswiftgen storyboards --template swift4 \"$PROJECT_DIR/GoogleMapWithRx\" --output \"$PROJECT_DIR/GoogleMapWithRx/Constants/Storyboards.swift\"\nelse\necho \"warning: SwiftGen not installed, download it from https://github.com/AliSoftware/SwiftGen\"\nfi";
+		};
+		EAED958620CA32D100749D1D /* Cartahge */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Prelude.framework",
+			);
+			name = Cartahge;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		F43A0C4D19A2541F8E9FE3AB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -638,6 +658,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3ZMTZ3U33V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GoogleMapWithRx/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -657,6 +681,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3ZMTZ3U33V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GoogleMapWithRx/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -7,7 +7,28 @@
 //
 
 import UIKit
+import Prelude
 
-class SpaceCollectionCell: UICollectionViewCell {
+final class SpaceCollectionCell: UICollectionViewCell, XibInstantiatable {
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        instantiate()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        instantiate()
+    }
 }
+
+extension SpaceCollectionCell {
+    func configure(by space: Space) {
+        idLabel.text = "\(space.id)"
+        nameLabel.text = space.name
+    }
+}
+
+

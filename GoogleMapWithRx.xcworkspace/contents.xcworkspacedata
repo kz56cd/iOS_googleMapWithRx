@@ -5,6 +5,9 @@
       location = "group:GoogleMapWithRx.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:CartFile">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
