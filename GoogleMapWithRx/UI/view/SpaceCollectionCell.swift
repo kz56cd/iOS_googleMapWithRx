@@ -14,6 +14,13 @@ final class SpaceCollectionCell: UICollectionViewCell, XibInstantiatable {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selectedCell: UIView!
     
+    override var isSelected: Bool {
+        didSet {
+            print("セレクトした \(isSelected)")
+            selectedCell.isHidden = !isSelected
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         instantiate()
@@ -29,6 +36,7 @@ extension SpaceCollectionCell {
     func configure(by space: Space) {
         idLabel.text = "\(space.id)"
         nameLabel.text = space.name
+        // isSelected = false
     }
 }
 

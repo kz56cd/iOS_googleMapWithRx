@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import GoogleMaps
 import RxGoogleMaps
+import MaterialComponents
 import Prelude
 
 class MapViewController: UIViewController {
@@ -18,6 +19,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewBottomMarginConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var researchButton: MDCButton!
     
     // MARK: - Property
     let disposeBag = DisposeBag()
@@ -67,13 +69,24 @@ extension MapViewController {
                 _self.changeCollectionViewState(isHidden: false)
                 
                 // test
-                let targetMarkerInfo = _self.markerInfos
+                let ip = _self.markerInfos
                     .enumerated()
                     .filter { $1.marker == marker }
-                    .compactMap { $0 }
+                    .compactMap { IndexPath(row: $0.offset, section: 0) }
                     .first
-                print(targetMarkerInfo)
-                _self.scrollCell(by: targetMarkerInfo?.offset)
+                guard let indexPath = ip else { return } // TODO: Do more clean
+                _self.scrollCell(by: indexPath)
+
+                guard let cell = _self.collectionView.cellForItem(at: indexPath) as? SpaceCollectionCell else { return }
+                cell.isSelected = true
+                _self.collectionView.reloadItems(at: [indexPath])
+                
+//                guard let indexPath = ip else { return } // TODO: Do more clean
+//                guard let cell = _self.collectionView.cellForItem(at: indexPath) as? SpaceCollectionCell else { return }
+//                cell.isSelected = true
+//                _self.collectionView.reloadItems(at: [indexPath])
+//                _self.scrollCell(by: indexPath)
+//                _self.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
         
@@ -109,7 +122,7 @@ extension MapViewController {
             Space(id: 2, name: "駅近の貸し会議室", latitude: 35.907539, longitude: 139.629888, minPrice: 1000),
             Space(id: 3, name: "落ち着いた雰囲気のセレモニーホール", latitude: 35.911128, longitude: 139.625505, minPrice: 1000),
         ]
-        for i in 0...20 {
+        for i in 0...37 {
             let long = 139.635505 + (Double(i) / 200)
             spaces.append(Space(id: i + 3, name: "foo", latitude: 35.911128, longitude: long, minPrice: 1000))
         }
@@ -129,7 +142,7 @@ extension MapViewController {
     }
     
     fileprivate func changeCollectionViewState(isHidden: Bool) {
-        UIView.animate(withDuration: 1.0) { [weak self] in
+        UIView.animate(withDuration: 0.1) { [weak self] in
             guard let _self = self else { return }
             _self.collectionViewBottomMarginConstraint.constant = isHidden
                 ? -(_self.collectionViewHeightConstraint.constant - 35)
@@ -138,14 +151,15 @@ extension MapViewController {
         }
     }
     
-    fileprivate func scrollCell(by row: Int?) {
-        guard let row = row else { return }
+    fileprivate func scrollCell(by indexPath: IndexPath?) {
+         guard let indexPath = indexPath else { return }
         collectionView.scrollToItem(
-            at: IndexPath(row: row, section: 0),
+            at: indexPath,
             at: .centeredHorizontally,
             animated: true
         )
     }
+
 
 }
 
@@ -158,6 +172,13 @@ extension MapViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithType(SpaceCollectionCell.self, forIndexPath: indexPath)
         cell.configure(by: markerInfos[indexPath.row].space)
         return cell
+    }
+}
+
+extension MapViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, shouldSpringLoadItemAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
+        print("shouldSpringLoadItemAt: \(indexPath)")
+        return true
     }
 }
 

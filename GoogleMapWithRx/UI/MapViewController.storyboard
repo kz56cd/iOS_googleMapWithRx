@@ -26,6 +26,17 @@
                                     <outletCollection property="gestureRecognizers" destination="ngH-ml-waH" appends="YES" id="q63-1b-7M5"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcc-5z-wdh" customClass="MDCButton">
+                                <rect key="frame" x="207" y="26" width="140" height="24"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="C1h-Gj-Vac"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="12"/>
+                                <state key="normal" title="この地点で再検索">
+                                    <color key="titleColor" white="0.57600911458333337" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vEl-JW-HtP">
                                 <rect key="frame" x="0.0" y="482" width="375" height="185"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -60,8 +71,10 @@
                         <constraints>
                             <constraint firstItem="vEl-JW-HtP" firstAttribute="trailing" secondItem="X9f-GG-txQ" secondAttribute="trailing" id="2vU-MV-yaT"/>
                             <constraint firstItem="lYE-ik-OGb" firstAttribute="top" secondItem="5K2-83-aCW" secondAttribute="top" id="Eul-f4-mJQ"/>
+                            <constraint firstItem="hcc-5z-wdh" firstAttribute="top" secondItem="X9f-GG-txQ" secondAttribute="top" constant="6" id="KWu-tm-eMW"/>
                             <constraint firstItem="lYE-ik-OGb" firstAttribute="leading" secondItem="X9f-GG-txQ" secondAttribute="leading" id="ZeD-gS-FC4"/>
                             <constraint firstItem="vEl-JW-HtP" firstAttribute="leading" secondItem="X9f-GG-txQ" secondAttribute="leading" id="bAv-zc-8H2"/>
+                            <constraint firstItem="X9f-GG-txQ" firstAttribute="trailing" secondItem="hcc-5z-wdh" secondAttribute="trailing" constant="28" id="d1o-uq-3e2"/>
                             <constraint firstItem="lYE-ik-OGb" firstAttribute="trailing" secondItem="X9f-GG-txQ" secondAttribute="trailing" id="eci-Gk-zkp"/>
                             <constraint firstItem="lYE-ik-OGb" firstAttribute="bottom" secondItem="X9f-GG-txQ" secondAttribute="bottom" id="hnw-R1-8Ze"/>
                             <constraint firstItem="X9f-GG-txQ" firstAttribute="bottom" secondItem="vEl-JW-HtP" secondAttribute="bottom" id="tlM-nL-emL"/>
@@ -73,6 +86,7 @@
                         <outlet property="collectionViewBottomMarginConstraint" destination="tlM-nL-emL" id="jdz-nr-jts"/>
                         <outlet property="collectionViewHeightConstraint" destination="sVT-OO-olF" id="lxQ-1f-TtI"/>
                         <outlet property="mapView" destination="lYE-ik-OGb" id="K5l-Dy-5X9"/>
+                        <outlet property="researchButton" destination="hcc-5z-wdh" id="M2j-vR-71z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YAh-yI-XfT" sceneMemberID="firstResponder"/>
@@ -82,7 +96,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="204" y="415"/>
+            <point key="canvasLocation" x="204" y="414.24287856071965"/>
         </scene>
     </scenes>
 </document>
