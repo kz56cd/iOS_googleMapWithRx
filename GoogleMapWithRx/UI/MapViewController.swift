@@ -24,6 +24,13 @@ class MapViewController: UIViewController {
     // MARK: - Property
     let disposeBag = DisposeBag()
     var markerInfos: [MarkerInfo] = []
+    var selectedIndexPath: IndexPath? = nil {
+        didSet {
+            guard let indexPath = selectedIndexPath else { return }
+            scrollCell(by: indexPath)
+            collectionView.reloadItems(at: [indexPath])
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,17 +76,17 @@ extension MapViewController {
                 _self.changeCollectionViewState(isHidden: false)
                 
                 // test
-                let ip = _self.markerInfos
+                let indexPath = _self.markerInfos
                     .enumerated()
                     .filter { $1.marker == marker }
                     .compactMap { IndexPath(row: $0.offset, section: 0) }
                     .first
-                guard let indexPath = ip else { return } // TODO: Do more clean
-                _self.scrollCell(by: indexPath)
+//                guard let indexPath = ip else { return } // TODO: Do more clean
+                _self.selectedIndexPath = indexPath
+//                _self.scrollCell(by: _self.selectedIndexPath)
+//                _self.collectionView.reloadItems(at: [_self.selectedIndexPath])
+                
 
-                guard let cell = _self.collectionView.cellForItem(at: indexPath) as? SpaceCollectionCell else { return }
-                cell.isSelected = true
-                _self.collectionView.reloadItems(at: [indexPath])
                 
 //                guard let indexPath = ip else { return } // TODO: Do more clean
 //                guard let cell = _self.collectionView.cellForItem(at: indexPath) as? SpaceCollectionCell else { return }
@@ -159,8 +166,6 @@ extension MapViewController {
             animated: true
         )
     }
-
-
 }
 
 extension MapViewController: UICollectionViewDataSource {
@@ -171,6 +176,7 @@ extension MapViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithType(SpaceCollectionCell.self, forIndexPath: indexPath)
         cell.configure(by: markerInfos[indexPath.row].space)
+        cell.isSelected = selectedIndexPath?.row == indexPath.row
         return cell
     }
 }
@@ -179,6 +185,11 @@ extension MapViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, shouldSpringLoadItemAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
         print("shouldSpringLoadItemAt: \(indexPath)")
         return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, c indexPath: IndexPath) {
+        print("hoge")
+        selectedIndexPath = indexPath
     }
 }
 
