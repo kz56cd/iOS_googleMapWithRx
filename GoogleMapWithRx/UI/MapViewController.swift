@@ -129,14 +129,14 @@ extension MapViewController {
     }
     
     fileprivate func prepareCollectionView() {
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 25, left: 0, bottom: 0, right: 0)
         collectionView.registerClassForCellWithType(SpaceCollectionCell.self)
     }
     
     fileprivate func changeCollectionViewState(isHidden: Bool) {
         UIView.animate(withDuration: 1.0) { [weak self] in
             guard let _self = self else { return }
-            _self.collectionViewBottomMarginConstraint.constant = isHidden ? -138 : 0
+            _self.collectionViewBottomMarginConstraint.constant = isHidden ? -145 : 0
             _self.view.layoutIfNeeded()
         }
     }
