@@ -71,6 +71,7 @@
                     <connections>
                         <outlet property="collectionView" destination="vEl-JW-HtP" id="JaW-mc-Hbj"/>
                         <outlet property="collectionViewBottomMarginConstraint" destination="tlM-nL-emL" id="jdz-nr-jts"/>
+                        <outlet property="collectionViewHeightConstraint" destination="sVT-OO-olF" id="lxQ-1f-TtI"/>
                         <outlet property="mapView" destination="lYE-ik-OGb" id="K5l-Dy-5X9"/>
                     </connections>
                 </viewController>

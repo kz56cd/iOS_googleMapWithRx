@@ -12,6 +12,7 @@ import Prelude
 final class SpaceCollectionCell: UICollectionViewCell, XibInstantiatable {
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var selectedCell: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

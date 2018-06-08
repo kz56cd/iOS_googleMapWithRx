@@ -6,6 +6,7 @@ target 'GoogleMapWithRx' do
   use_frameworks!
 
   pod 'RxGoogleMaps'
+  pod 'MaterialComponents'
 
   target 'GoogleMapWithRxTests' do
     inherit! :search_paths

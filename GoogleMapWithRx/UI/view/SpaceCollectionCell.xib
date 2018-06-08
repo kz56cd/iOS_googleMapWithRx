@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="idLabel" destination="djq-g0-Utf" id="1c2-Lz-f87"/>
                 <outlet property="nameLabel" destination="gsg-r3-xQz" id="Xyv-Zz-O4W"/>
+                <outlet property="selectedCell" destination="ewa-pp-DMO" id="76f-Kl-cPk"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -53,17 +54,29 @@
                                     <constraint firstItem="GpN-UY-8ix" firstAttribute="top" secondItem="d51-7Q-zMY" secondAttribute="top" id="gtV-n9-8Ro"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsg-r3-xQz">
-                                <rect key="frame" x="0.0" y="90" width="145" height="70"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsg-r3-xQz">
+                                <rect key="frame" x="0.0" y="90" width="145" height="65"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewa-pp-DMO">
+                                <rect key="frame" x="0.0" y="155" width="145" height="5"/>
+                                <color key="backgroundColor" red="0.13725490196078433" green="0.52941176470588236" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="giF-UJ-PNA"/>
+                                </constraints>
+                            </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="ewa-pp-DMO" firstAttribute="leading" secondItem="XrA-GR-qvk" secondAttribute="leading" id="2cq-gZ-pEA"/>
+                            <constraint firstAttribute="bottom" secondItem="ewa-pp-DMO" secondAttribute="bottom" id="Yuw-N0-ioc"/>
+                            <constraint firstAttribute="trailing" secondItem="ewa-pp-DMO" secondAttribute="trailing" id="cQh-KV-P4c"/>
+                        </constraints>
                     </stackView>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.92214927002069202" green="0.91617263402052973" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="XrA-GR-qvk" secondAttribute="bottom" id="3hW-47-amz"/>
                 <constraint firstAttribute="trailing" secondItem="XrA-GR-qvk" secondAttribute="trailing" id="QBA-UT-jlx"/>

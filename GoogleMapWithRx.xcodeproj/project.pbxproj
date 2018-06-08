@@ -23,6 +23,7 @@
 		EAED958320CA30E100749D1D /* SpaceCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED958220CA30E100749D1D /* SpaceCollectionCell.swift */; };
 		EAED958520CA30F000749D1D /* SpaceCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAED958420CA30F000749D1D /* SpaceCollectionCell.xib */; };
 		EAED958820CA331000749D1D /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAED958720CA331000749D1D /* Prelude.framework */; };
+		EAED958A20CA717600749D1D /* MarkerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED958920CA717600749D1D /* MarkerInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		EAED958220CA30E100749D1D /* SpaceCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCollectionCell.swift; sourceTree = "<group>"; };
 		EAED958420CA30F000749D1D /* SpaceCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceCollectionCell.xib; sourceTree = "<group>"; };
 		EAED958720CA331000749D1D /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = Carthage/Build/iOS/Prelude.framework; sourceTree = "<group>"; };
+		EAED958920CA717600749D1D /* MarkerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerInfo.swift; sourceTree = "<group>"; };
 		FF83E47814B6329D9C1FC0A3 /* Pods_GoogleMapWithRxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapWithRxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				EAED956720CA200200749D1D /* Space.swift */,
+				EAED958920CA717600749D1D /* MarkerInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -448,11 +451,23 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GoogleMapWithRx/Pods-GoogleMapWithRx-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
@@ -489,6 +504,7 @@
 				EAED958320CA30E100749D1D /* SpaceCollectionCell.swift in Sources */,
 				EAED956D20CA2A4C00749D1D /* Storyboards.swift in Sources */,
 				EAED956F20CA2C0F00749D1D /* MapViewController.swift in Sources */,
+				EAED958A20CA717600749D1D /* MarkerInfo.swift in Sources */,
 				EAED957E20CA2DEE00749D1D /* AppDelegate.swift in Sources */,
 				EAED956820CA200200749D1D /* Space.swift in Sources */,
 			);
