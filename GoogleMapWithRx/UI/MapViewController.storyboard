@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYE-ik-OGb" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="482"/>
                                 <color key="backgroundColor" red="0.96060041240000005" green="0.96060041240000005" blue="0.96060041240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                             </view>
@@ -46,21 +46,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Gxo-IC-VuO" customClass="SpaceCollectionCell" customModule="GoogleMapWithRx" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="12.5" width="150" height="160"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                        <color key="backgroundColor" red="0.91356994979999995" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="customSize" width="150" height="160"/>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="NeV-jZ-gNd" id="BV7-QM-keJ"/>
-                                    <outlet property="delegate" destination="NeV-jZ-gNd" id="l2m-89-E7h"/>
+                                    <outlet property="dataSource" destination="NeV-jZ-gNd" id="7es-mX-Zrv"/>
+                                    <outlet property="delegate" destination="NeV-jZ-gNd" id="eOU-ST-z03"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -73,7 +62,7 @@
                             <constraint firstItem="vEl-JW-HtP" firstAttribute="leading" secondItem="X9f-GG-txQ" secondAttribute="leading" id="bAv-zc-8H2"/>
                             <constraint firstItem="X9f-GG-txQ" firstAttribute="trailing" secondItem="hcc-5z-wdh" secondAttribute="trailing" constant="28" id="d1o-uq-3e2"/>
                             <constraint firstItem="lYE-ik-OGb" firstAttribute="trailing" secondItem="X9f-GG-txQ" secondAttribute="trailing" id="eci-Gk-zkp"/>
-                            <constraint firstItem="lYE-ik-OGb" firstAttribute="bottom" secondItem="X9f-GG-txQ" secondAttribute="bottom" id="hnw-R1-8Ze"/>
+                            <constraint firstItem="vEl-JW-HtP" firstAttribute="top" secondItem="lYE-ik-OGb" secondAttribute="bottom" id="hcb-8j-PEc"/>
                             <constraint firstItem="X9f-GG-txQ" firstAttribute="bottom" secondItem="vEl-JW-HtP" secondAttribute="bottom" id="tlM-nL-emL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X9f-GG-txQ"/>

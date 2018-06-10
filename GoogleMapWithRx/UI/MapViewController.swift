@@ -179,4 +179,3 @@ extension MapViewController: UICollectionViewDelegate {
         selectedIndexPath = indexPath
     }
 }
-
