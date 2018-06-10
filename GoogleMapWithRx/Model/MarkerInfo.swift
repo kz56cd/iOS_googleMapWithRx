@@ -25,6 +25,6 @@ struct MarkerInfo {
         )
         marker.title = "¥ \(space.minPrice)(\(space.id))"
         marker.isDraggable = true
-        marker.icon = #imageLiteral(resourceName: "marker_normal")
+        marker.icon = #imageLiteral(resourceName: "marker_on")
     }
 }
