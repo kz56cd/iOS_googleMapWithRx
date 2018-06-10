@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYE-ik-OGb" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="482"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.96060041240000005" green="0.96060041240000005" blue="0.96060041240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                             </view>
@@ -56,13 +56,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vEl-JW-HtP" firstAttribute="trailing" secondItem="X9f-GG-txQ" secondAttribute="trailing" id="2vU-MV-yaT"/>
+                            <constraint firstAttribute="bottom" secondItem="lYE-ik-OGb" secondAttribute="bottom" id="5rr-A7-WT8"/>
                             <constraint firstItem="lYE-ik-OGb" firstAttribute="top" secondItem="5K2-83-aCW" secondAttribute="top" id="Eul-f4-mJQ"/>
                             <constraint firstItem="hcc-5z-wdh" firstAttribute="top" secondItem="X9f-GG-txQ" secondAttribute="top" constant="6" id="KWu-tm-eMW"/>
                             <constraint firstItem="lYE-ik-OGb" firstAttribute="leading" secondItem="X9f-GG-txQ" secondAttribute="leading" id="ZeD-gS-FC4"/>
                             <constraint firstItem="vEl-JW-HtP" firstAttribute="leading" secondItem="X9f-GG-txQ" secondAttribute="leading" id="bAv-zc-8H2"/>
                             <constraint firstItem="X9f-GG-txQ" firstAttribute="trailing" secondItem="hcc-5z-wdh" secondAttribute="trailing" constant="28" id="d1o-uq-3e2"/>
                             <constraint firstItem="lYE-ik-OGb" firstAttribute="trailing" secondItem="X9f-GG-txQ" secondAttribute="trailing" id="eci-Gk-zkp"/>
-                            <constraint firstItem="vEl-JW-HtP" firstAttribute="top" secondItem="lYE-ik-OGb" secondAttribute="bottom" id="hcb-8j-PEc"/>
                             <constraint firstItem="X9f-GG-txQ" firstAttribute="bottom" secondItem="vEl-JW-HtP" secondAttribute="bottom" id="tlM-nL-emL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X9f-GG-txQ"/>

@@ -176,6 +176,14 @@ extension MapViewController: UICollectionViewDataSource {
 extension MapViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("hoge")
-        selectedIndexPath = indexPath
+        let markerInfo = markerInfos[indexPath.row]
+        mapView.selectedMarker = markerInfo.marker
+        mapView.animate(
+            to: GMSCameraPosition.camera(
+            withLatitude: markerInfo.space.latitude,
+            longitude: markerInfo.space.longitude,
+            zoom: 14
+            )
+        )
     }
 }
