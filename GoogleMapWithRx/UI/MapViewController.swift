@@ -79,12 +79,13 @@ extension MapViewController {
                 print("Selected marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
                 _self.changeCollectionViewState(isHidden: false)
                 
-                // test
                 let indexPath = _self.markerInfos
                     .enumerated()
                     .filter { $1.marker == marker }
                     .compactMap { IndexPath(row: $0.offset, section: 0) }
                     .first
+                
+                guard _self.selectedIndexPath != indexPath else { return }
                 _self.selectedIndexPath = indexPath
             })
             .disposed(by: disposeBag)
@@ -123,7 +124,7 @@ extension MapViewController {
         ]
         for i in 0...37 {
             let long = 139.635505 + (Double(i) / 200)
-            spaces.append(Space(id: i + 3, name: "foo", latitude: 35.911128, longitude: long, minPrice: 1000))
+            spaces.append(Space(id: i + 4, name: "foo", latitude: 35.911128, longitude: long, minPrice: 1000))
         }
         return spaces
     }
@@ -158,6 +159,15 @@ extension MapViewController {
             animated: true
         )
     }
+    
+    // MARK: - routing
+    func presentDetail() {
+        present(
+            StoryboardScene.DetailViewController.initialScene.instantiate(),
+            animated: true,
+            completion: nil
+        )
+    }
 }
 
 extension MapViewController: UICollectionViewDataSource {
@@ -188,7 +198,10 @@ extension MapViewController: UICollectionViewDelegate {
         }
         
         if let selectedIndexPath = selectedIndexPath {
-            guard selectedIndexPath != indexPath else { return }
+            guard selectedIndexPath != indexPath else {
+                presentDetail()
+                return
+            }
             willMoveMarkerAndCamera()
         } else {
             willMoveMarkerAndCamera()

@@ -23,8 +23,12 @@ struct MarkerInfo {
                 longitude: space.longitude
             )
         )
-        marker.title = "¥ \(space.minPrice)(\(space.id))"
+        marker.title = "¥ \(space.minPrice)(id: \(space.id))"
+        marker.tracksInfoWindowChanges = true
+        
+        marker
+        
         marker.isDraggable = true
-        marker.icon = #imageLiteral(resourceName: "marker_on")
+        marker.icon = #imageLiteral(resourceName: "pin")
     }
 }

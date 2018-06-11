@@ -10,6 +10,8 @@
 		0A7CBE230BD4F129FD806ACB /* Pods_GoogleMapWithRxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF83E47814B6329D9C1FC0A3 /* Pods_GoogleMapWithRxTests.framework */; };
 		9F61F650953C41B22425D4C5 /* Pods_GoogleMapWithRxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF259233C0F639133501D8A /* Pods_GoogleMapWithRxUITests.framework */; };
 		B38F12B13D47B8D3D439CA79 /* Pods_GoogleMapWithRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A4333D11E62E11CE7501E8 /* Pods_GoogleMapWithRx.framework */; };
+		EA266E9020CD01B100C1147D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA266E8F20CD01B100C1147D /* DetailViewController.swift */; };
+		EA266E9220CD01BA00C1147D /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA266E9120CD01BA00C1147D /* DetailViewController.storyboard */; };
 		EA9B91AE20B7C68100017ADD /* GoogleMapWithRxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B91AD20B7C68100017ADD /* GoogleMapWithRxTests.swift */; };
 		EA9B91B920B7C68100017ADD /* GoogleMapWithRxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B91B820B7C68100017ADD /* GoogleMapWithRxUITests.swift */; };
 		EAED956820CA200200749D1D /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED956720CA200200749D1D /* Space.swift */; };
@@ -52,6 +54,8 @@
 		8DB0559F9C10AF872C312DCA /* Pods-GoogleMapWithRxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapWithRxTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapWithRxTests/Pods-GoogleMapWithRxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFF259233C0F639133501D8A /* Pods_GoogleMapWithRxUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapWithRxUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8250BB8A6012A6B04B6BD9D /* Pods-GoogleMapWithRxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapWithRxTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapWithRxTests/Pods-GoogleMapWithRxTests.release.xcconfig"; sourceTree = "<group>"; };
+		EA266E8F20CD01B100C1147D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EA266E9120CD01BA00C1147D /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
 		EA9B919520B7C67F00017ADD /* GoogleMapWithRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleMapWithRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9B91A920B7C68100017ADD /* GoogleMapWithRxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleMapWithRxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9B91AD20B7C68100017ADD /* GoogleMapWithRxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapWithRxTests.swift; sourceTree = "<group>"; };
@@ -125,6 +129,15 @@
 				51D82E92766E2671F716CD5B /* Pods-GoogleMapWithRxUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EA266E8E20CD019900C1147D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				EA266E9120CD01BA00C1147D /* DetailViewController.storyboard */,
+				EA266E8F20CD01B100C1147D /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		EA9B918C20B7C67F00017ADD = {
@@ -201,6 +214,7 @@
 				EAED957020CA2C1600749D1D /* MapViewController.storyboard */,
 				EAED956E20CA2C0F00749D1D /* MapViewController.swift */,
 				EAED957520CA2DCC00749D1D /* view */,
+				EA266E8E20CD019900C1147D /* Detail */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -340,6 +354,7 @@
 				EAED958520CA30F000749D1D /* SpaceCollectionCell.xib in Resources */,
 				EAED957F20CA2DEE00749D1D /* Info.plist in Resources */,
 				EAED957C20CA2DEE00749D1D /* Assets.xcassets in Resources */,
+				EA266E9220CD01BA00C1147D /* DetailViewController.storyboard in Resources */,
 				EAED957D20CA2DEE00749D1D /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +522,7 @@
 				EAED958A20CA717600749D1D /* MarkerInfo.swift in Sources */,
 				EAED957E20CA2DEE00749D1D /* AppDelegate.swift in Sources */,
 				EAED956820CA200200749D1D /* Space.swift in Sources */,
+				EA266E9020CD01B100C1147D /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

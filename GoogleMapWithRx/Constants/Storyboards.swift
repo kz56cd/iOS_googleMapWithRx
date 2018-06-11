@@ -53,6 +53,11 @@ internal extension UIViewController {
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 internal enum StoryboardScene {
+  internal enum DetailViewController: StoryboardType {
+    internal static let storyboardName = "DetailViewController"
+
+    internal static let initialScene = InitialSceneType<GoogleMapWithRx.DetailViewController>(storyboard: DetailViewController.self)
+  }
   internal enum LaunchScreen: StoryboardType {
     internal static let storyboardName = "LaunchScreen"
 
