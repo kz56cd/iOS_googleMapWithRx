@@ -12,6 +12,9 @@
 		B38F12B13D47B8D3D439CA79 /* Pods_GoogleMapWithRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A4333D11E62E11CE7501E8 /* Pods_GoogleMapWithRx.framework */; };
 		EA266E9020CD01B100C1147D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA266E8F20CD01B100C1147D /* DetailViewController.swift */; };
 		EA266E9220CD01BA00C1147D /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA266E9120CD01BA00C1147D /* DetailViewController.storyboard */; };
+		EA266E9420CF37EB00C1147D /* CustomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA266E9320CF37EB00C1147D /* CustomInfoView.swift */; };
+		EA266E9620CF381300C1147D /* CustomInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA266E9520CF381300C1147D /* CustomInfoView.xib */; };
+		EA266E9920CF388900C1147D /* InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA266E9820CF388900C1147D /* InspectableView.swift */; };
 		EA9B91AE20B7C68100017ADD /* GoogleMapWithRxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B91AD20B7C68100017ADD /* GoogleMapWithRxTests.swift */; };
 		EA9B91B920B7C68100017ADD /* GoogleMapWithRxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B91B820B7C68100017ADD /* GoogleMapWithRxUITests.swift */; };
 		EAED956820CA200200749D1D /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED956720CA200200749D1D /* Space.swift */; };
@@ -56,6 +59,9 @@
 		D8250BB8A6012A6B04B6BD9D /* Pods-GoogleMapWithRxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapWithRxTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapWithRxTests/Pods-GoogleMapWithRxTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA266E8F20CD01B100C1147D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EA266E9120CD01BA00C1147D /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
+		EA266E9320CF37EB00C1147D /* CustomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoView.swift; sourceTree = "<group>"; };
+		EA266E9520CF381300C1147D /* CustomInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomInfoView.xib; sourceTree = "<group>"; };
+		EA266E9820CF388900C1147D /* InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectableView.swift; sourceTree = "<group>"; };
 		EA9B919520B7C67F00017ADD /* GoogleMapWithRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleMapWithRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9B91A920B7C68100017ADD /* GoogleMapWithRxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleMapWithRxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9B91AD20B7C68100017ADD /* GoogleMapWithRxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapWithRxTests.swift; sourceTree = "<group>"; };
@@ -140,6 +146,14 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		EA266E9720CF388900C1147D /* ViewParts */ = {
+			isa = PBXGroup;
+			children = (
+				EA266E9820CF388900C1147D /* InspectableView.swift */,
+			);
+			path = ViewParts;
+			sourceTree = "<group>";
+		};
 		EA9B918C20B7C67F00017ADD = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +225,7 @@
 		EAED956B20CA2A3200749D1D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EA266E9720CF388900C1147D /* ViewParts */,
 				EAED957020CA2C1600749D1D /* MapViewController.storyboard */,
 				EAED956E20CA2C0F00749D1D /* MapViewController.swift */,
 				EAED957520CA2DCC00749D1D /* view */,
@@ -224,6 +239,8 @@
 			children = (
 				EAED958420CA30F000749D1D /* SpaceCollectionCell.xib */,
 				EAED958220CA30E100749D1D /* SpaceCollectionCell.swift */,
+				EA266E9520CF381300C1147D /* CustomInfoView.xib */,
+				EA266E9320CF37EB00C1147D /* CustomInfoView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -354,6 +371,7 @@
 				EAED958520CA30F000749D1D /* SpaceCollectionCell.xib in Resources */,
 				EAED957F20CA2DEE00749D1D /* Info.plist in Resources */,
 				EAED957C20CA2DEE00749D1D /* Assets.xcassets in Resources */,
+				EA266E9620CF381300C1147D /* CustomInfoView.xib in Resources */,
 				EA266E9220CD01BA00C1147D /* DetailViewController.storyboard in Resources */,
 				EAED957D20CA2DEE00749D1D /* LaunchScreen.storyboard in Resources */,
 			);
@@ -516,9 +534,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA266E9420CF37EB00C1147D /* CustomInfoView.swift in Sources */,
 				EAED958320CA30E100749D1D /* SpaceCollectionCell.swift in Sources */,
 				EAED956D20CA2A4C00749D1D /* Storyboards.swift in Sources */,
 				EAED956F20CA2C0F00749D1D /* MapViewController.swift in Sources */,
+				EA266E9920CF388900C1147D /* InspectableView.swift in Sources */,
 				EAED958A20CA717600749D1D /* MarkerInfo.swift in Sources */,
 				EAED957E20CA2DEE00749D1D /* AppDelegate.swift in Sources */,
 				EAED956820CA200200749D1D /* Space.swift in Sources */,

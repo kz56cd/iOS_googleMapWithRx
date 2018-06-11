@@ -113,6 +113,18 @@ extension MapViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        mapView.rx.handleMarkerInfoWindow { marker -> (UIView?) in
+//            guard let _self = self else { return nil }
+            let view = CustomInfoView(frame:
+                CGRect(
+                    origin: CGPoint.zero,
+                    size: CGSize(width: 90, height: 30)
+                )
+            )
+            view.configure(title: marker.title ?? "???")
+            return view
+        }
     }
     
     fileprivate func getSpacesByApi() -> [Space] {

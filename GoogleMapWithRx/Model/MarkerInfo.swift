@@ -25,9 +25,6 @@ struct MarkerInfo {
         )
         marker.title = "¥ \(space.minPrice)(id: \(space.id))"
         marker.tracksInfoWindowChanges = true
-        
-        marker
-        
         marker.isDraggable = true
         marker.icon = #imageLiteral(resourceName: "pin")
     }
