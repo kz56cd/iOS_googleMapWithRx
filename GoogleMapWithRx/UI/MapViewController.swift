@@ -119,7 +119,7 @@ extension MapViewController {
             let view = CustomInfoView(frame:
                 CGRect(
                     origin: CGPoint.zero,
-                    size: CGSize(width: 90, height: 30)
+                    size: CGSize(width: 100, height: 30)
                 )
             )
             view.configure(title: marker.title ?? "???")
