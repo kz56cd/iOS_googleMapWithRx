@@ -24,7 +24,7 @@ class MapViewController: UIViewController {
     // MARK: - Property
     let disposeBag = DisposeBag()
     var markerInfos: [MarkerInfo] = []
-    var isMovingCellArea = false
+    let isMovingCellArea = false // 常にセルエリアは表示するためfalseに
     var selectedIndexPath: IndexPath? = nil {
         didSet {
             guard let indexPath = selectedIndexPath,
@@ -182,6 +182,23 @@ extension MapViewController {
             animated: true,
             completion: nil
         )
+    }
+}
+
+extension MapViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let visibleCells = collectionView
+            .visibleCells
+            .filter { collectionView.bounds.contains($0.frame) }
+        
+        _ = visibleCells.map { cell in
+            let point = CGPoint(
+                x: cell.frame.origin.x - collectionView.contentOffset.x,
+                y: cell.frame.origin.y - collectionView.contentOffset.y
+            )
+            print("👊: \(point)")
+        }
+        print("-----------------------")
     }
 }
 
