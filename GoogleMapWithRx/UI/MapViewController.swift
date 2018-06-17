@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
     // MARK: - Property
     let disposeBag = DisposeBag()
     var markerInfos: [MarkerInfo] = []
+    var isMovingCellArea = false
     var selectedIndexPath: IndexPath? = nil {
         didSet {
             guard let indexPath = selectedIndexPath,
@@ -154,6 +155,8 @@ extension MapViewController {
     }
     
     fileprivate func changeCollectionViewState(isHidden: Bool) {
+        guard isMovingCellArea else { return }
+        
         UIView.animate(withDuration: 0.15) { [weak self] in
             guard let _self = self else { return }
             _self.collectionViewBottomMarginConstraint.constant = isHidden
