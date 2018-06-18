@@ -47,6 +47,7 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        // デフォルト位置(1件目)をセレクト状態にする
         guard markerInfos.count > 0 else { return }
         updateSelectedMarker(IndexPath(row: 0, section: 0))
     }
@@ -73,8 +74,7 @@ extension MapViewController {
         
         // camera ポジション変更 検知
         mapView.rx.didChange.asDriver()
-            .drive(onNext: {[weak self] in
-                guard let _self = self else { return }
+            .drive(onNext: {
                 print("0️⃣ Did change position: \($0)")
             })
             .disposed(by: disposeBag)
