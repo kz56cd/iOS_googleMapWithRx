@@ -23,8 +23,10 @@ class MapViewController: UIViewController {
     
     // MARK: - Property
     let disposeBag = DisposeBag()
-    var markerInfos: [MarkerInfo] = []
+    let defaultZoomValue: Float = 14.0
     let isMovingCellArea = false // NOTE: 常にセルエリアは表示するためfalseに
+    
+    var markerInfos: [MarkerInfo] = []
     var selectedIndexPath: IndexPath? = nil {
         didSet {
             guard let indexPath = selectedIndexPath else { return }
@@ -59,7 +61,7 @@ extension MapViewController {
         mapView.camera = GMSCameraPosition.camera( // 大宮駅
             withLatitude: 35.906295,
             longitude: 139.623999,
-            zoom: 14
+            zoom: defaultZoomValue
         )
         
         // camera ポジション変更 検知
@@ -149,7 +151,14 @@ extension MapViewController {
     
     // MARK: - for fixed area (collection view)
     fileprivate func prepareCollectionView() {
-        collectionView.contentInset = UIEdgeInsets(top: 25, left: 0, bottom: 0, right: 0)
+        // NOTE: マジックナンバーはセルwidthサイズ
+        let sideMargin = (collectionView.bounds.width - 145) / 2
+        collectionView.contentInset = UIEdgeInsets(
+            top: 25,
+            left: sideMargin,
+            bottom: 0,
+            right: sideMargin
+        )
         collectionView.registerClassForCellWithType(SpaceCollectionCell.self)
     }
     
@@ -215,7 +224,7 @@ extension MapViewController: UIScrollViewDelegate {
         
         // v.3
         // NOTE:
-        // v.2と同様、雑にcellを1つだけ取得している。更に使い勝手をよくするならば
+        // v.2と同様、「.firstにより」雑にcellを1つだけ取得している。更に使い勝手をよくするならば
         // v.1のように座標を監視して、画面中央に近いセルを渡すとより良さそうではある
         let visibleCellIndexPath = collectionView
             .visibleCells
@@ -257,7 +266,7 @@ extension MapViewController: UICollectionViewDelegate {
                 to: GMSCameraPosition.camera(
                     withLatitude: markerInfo.space.latitude,
                     longitude: markerInfo.space.longitude,
-                    zoom: 14
+                    zoom: defaultZoomValue
                 )
             )
         }
