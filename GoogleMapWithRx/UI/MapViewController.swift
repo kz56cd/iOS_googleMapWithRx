@@ -43,6 +43,13 @@ class MapViewController: UIViewController {
         configureMapView()
         prepareCollectionView()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard markerInfos.count > 0 else { return }
+        updateSelectedMarker(IndexPath(row: 0, section: 0))
+    }
 }
 
 extension MapViewController {
@@ -175,12 +182,20 @@ extension MapViewController {
     }
     
     fileprivate func scrollCell(by indexPath: IndexPath?) {
-         guard let indexPath = indexPath else { return }
+        guard let indexPath = indexPath else { return }
         collectionView.scrollToItem(
             at: indexPath,
             at: .centeredHorizontally,
             animated: true
         )
+    }
+    
+    fileprivate func updateSelectedMarker(_ indexPath: IndexPath?) {
+        guard let indexPath = indexPath else { return }
+        mapView.selectedMarker = markerInfos[indexPath.row].marker
+        // カメラ切替
+        guard let position = mapView.selectedMarker?.position else { return }
+        mapView.animate(with: GMSCameraUpdate.setTarget(position))
     }
     
     // MARK: - routing
@@ -195,15 +210,15 @@ extension MapViewController {
 
 extension MapViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        shouldChangeSelectStateForCell()
+        updateSelectedMarker(getIndexPathNearCenterPotision())
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard !decelerate else { return }
-        shouldChangeSelectStateForCell()
+        updateSelectedMarker(getIndexPathNearCenterPotision())
     }
     
-    private func shouldChangeSelectStateForCell() {
+    private func getIndexPathNearCenterPotision() -> IndexPath? {
 // v.1
 //        let visibleCells = collectionView
 //            .visibleCells
@@ -226,18 +241,12 @@ extension MapViewController: UIScrollViewDelegate {
         // NOTE:
         // v.2と同様、「.firstにより」雑にcellを1つだけ取得している。更に使い勝手をよくするならば
         // v.1のように座標を監視して、画面中央に近いセルを渡すとより良さそうではある
-        let visibleCellIndexPath = collectionView
+        return collectionView
             .visibleCells
             .filter { collectionView.bounds.contains($0.frame) }
             .compactMap { $0 as? SpaceCollectionCell }
             .first
             .flatMap { $0.indexPath }
-        guard let indexPath = visibleCellIndexPath else { return }
-        mapView.selectedMarker = markerInfos[indexPath.row].marker
-        
-        // カメラも切り替える
-        guard let position = mapView.selectedMarker?.position else { return }
-        mapView.animate(with: GMSCameraUpdate.setTarget(position))
     }
 }
 
