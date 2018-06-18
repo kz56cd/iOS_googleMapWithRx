@@ -186,16 +186,15 @@ extension MapViewController {
 
 extension MapViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        testPoint()
+        shouldChangeSelectStateForCell()
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard !decelerate else { return }
-        testPoint()
+        shouldChangeSelectStateForCell()
     }
     
-    private func testPoint() {
-
+    private func shouldChangeSelectStateForCell() {
 // v.1
 //        let visibleCells = collectionView
 //            .visibleCells
@@ -214,16 +213,22 @@ extension MapViewController: UIScrollViewDelegate {
 //            _self.selectedIndexPath = cell.indexPath
 //         }
         
-        // v.2
+        // v.3
         // NOTE:
-        // 雑にcellを1つだけ取得しているが、更に使い勝手をよくするならば
+        // v.2と同様、雑にcellを1つだけ取得している。更に使い勝手をよくするならば
         // v.1のように座標を監視して、画面中央に近いセルを渡すとより良さそうではある
-        let visibleCell = collectionView
+        let visibleCellIndexPath = collectionView
             .visibleCells
             .filter { collectionView.bounds.contains($0.frame) }
-            .flatMap { $0 as? SpaceCollectionCell }
+            .compactMap { $0 as? SpaceCollectionCell }
             .first
-        selectedIndexPath = visibleCell?.indexPath
+            .flatMap { $0.indexPath }
+        guard let indexPath = visibleCellIndexPath else { return }
+        mapView.selectedMarker = markerInfos[indexPath.row].marker
+        
+        // カメラも切り替える
+        guard let position = mapView.selectedMarker?.position else { return }
+        mapView.animate(with: GMSCameraUpdate.setTarget(position))
     }
 }
 
