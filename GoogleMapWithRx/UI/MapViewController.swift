@@ -27,11 +27,10 @@ class MapViewController: UIViewController {
     let isMovingCellArea = false // NOTE: 常にセルエリアは表示するためfalseに
     var selectedIndexPath: IndexPath? = nil {
         didSet {
-            guard let indexPath = selectedIndexPath,
-                let oldPath = oldValue else {
-                return
+            guard let indexPath = selectedIndexPath else { return }
+            if let oldPath = oldValue {
+                collectionView.reloadItems(at: [oldPath]) // NOTE: 先に古いセルのselect状態を解除
             }
-            collectionView.reloadItems(at: [oldPath]) // NOTE: 先に古いセルのselect状態を解除
             collectionView.reloadItems(at: [indexPath])
             scrollCell(by: indexPath)
         }
@@ -117,9 +116,8 @@ extension MapViewController {
             .disposed(by: disposeBag)
         
         mapView.rx.handleMarkerInfoWindow { marker -> (UIView?) in
-//            guard let _self = self else { return nil }
-            let view = CustomInfoView(frame:
-                CGRect(
+            let view = CustomInfoView(
+                frame: CGRect(
                     origin: CGPoint.zero,
                     size: CGSize(width: 100, height: 30)
                 )
@@ -213,12 +211,13 @@ extension MapViewController: UIScrollViewDelegate {
 //                y: cell.frame.origin.y - collectionView.contentOffset.y
 //            )
 //            print("👊: \(point)")
-//
-//            // とりあえずselectする
 //            _self.selectedIndexPath = cell.indexPath
 //         }
         
         // v.2
+        // NOTE:
+        // 雑にcellを1つだけ取得しているが、更に使い勝手をよくするならば
+        // v.1のように座標を監視して、画面中央に近いセルを渡すとより良さそうではある
         let visibleCell = collectionView
             .visibleCells
             .filter { collectionView.bounds.contains($0.frame) }
@@ -235,7 +234,6 @@ extension MapViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithType(SpaceCollectionCell.self, forIndexPath: indexPath)
-//        cell.configure(by: markerInfos[indexPath.row].space)
         cell.configure(
             by: markerInfos[indexPath.row].space,
             indexPath: indexPath
