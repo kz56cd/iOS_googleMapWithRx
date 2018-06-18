@@ -24,14 +24,15 @@ class MapViewController: UIViewController {
     // MARK: - Property
     let disposeBag = DisposeBag()
     var markerInfos: [MarkerInfo] = []
-    let isMovingCellArea = false // 常にセルエリアは表示するためfalseに
+    let isMovingCellArea = false // NOTE: 常にセルエリアは表示するためfalseに
     var selectedIndexPath: IndexPath? = nil {
         didSet {
             guard let indexPath = selectedIndexPath,
                 let oldPath = oldValue else {
                 return
             }
-            collectionView.reloadItems(at: [indexPath, oldPath])
+            collectionView.reloadItems(at: [oldPath]) // NOTE: 先に古いセルのselect状態を解除
+            collectionView.reloadItems(at: [indexPath])
             scrollCell(by: indexPath)
         }
     }
@@ -186,19 +187,44 @@ extension MapViewController {
 }
 
 extension MapViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let visibleCells = collectionView
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        testPoint()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard !decelerate else { return }
+        testPoint()
+    }
+    
+    private func testPoint() {
+
+// v.1
+//        let visibleCells = collectionView
+//            .visibleCells
+//            .filter { collectionView.bounds.contains($0.frame) }
+//
+//        _ = visibleCells.map { [weak self] cell in
+//            guard let _self = self,
+//                let cell = cell as? SpaceCollectionCell else {
+//                    return
+//            }
+//            let point = CGPoint(
+//                x: cell.frame.origin.x - collectionView.contentOffset.x,
+//                y: cell.frame.origin.y - collectionView.contentOffset.y
+//            )
+//            print("👊: \(point)")
+//
+//            // とりあえずselectする
+//            _self.selectedIndexPath = cell.indexPath
+//         }
+        
+        // v.2
+        let visibleCell = collectionView
             .visibleCells
             .filter { collectionView.bounds.contains($0.frame) }
-        
-        _ = visibleCells.map { cell in
-            let point = CGPoint(
-                x: cell.frame.origin.x - collectionView.contentOffset.x,
-                y: cell.frame.origin.y - collectionView.contentOffset.y
-            )
-            print("👊: \(point)")
-        }
-        print("-----------------------")
+            .flatMap { $0 as? SpaceCollectionCell }
+            .first
+        selectedIndexPath = visibleCell?.indexPath
     }
 }
 
@@ -209,7 +235,11 @@ extension MapViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithType(SpaceCollectionCell.self, forIndexPath: indexPath)
-        cell.configure(by: markerInfos[indexPath.row].space)
+//        cell.configure(by: markerInfos[indexPath.row].space)
+        cell.configure(
+            by: markerInfos[indexPath.row].space,
+            indexPath: indexPath
+        )
         cell.isSelected = selectedIndexPath?.row == indexPath.row
         return cell
     }

@@ -9,10 +9,16 @@
 import UIKit
 import Prelude
 
+protocol SpaceCollectionCellProtocol {
+    var indexPath: IndexPath { get }
+}
+
 final class SpaceCollectionCell: UICollectionViewCell, XibInstantiatable {
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selectedCell: UIView!
+    
+    var indexPath = IndexPath()
     
     override var isSelected: Bool {
         didSet {
@@ -32,11 +38,22 @@ final class SpaceCollectionCell: UICollectionViewCell, XibInstantiatable {
 }
 
 extension SpaceCollectionCell {
-    func configure(by space: Space) {
+//    func configure(by space: Space) {
+//        idLabel.text = "\(space.id)"
+//        nameLabel.text = space.name
+//        // isSelected = false
+//    }
+
+    func configure(
+        by space: Space,
+        indexPath: IndexPath
+        ) {
         idLabel.text = "\(space.id)"
         nameLabel.text = space.name
         // isSelected = false
+        self.indexPath = indexPath
     }
+
 }
 
 
